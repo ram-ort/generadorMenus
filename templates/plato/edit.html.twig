@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar plato{% endblock %}
+{% block body %}
+    {% block tituloseccion %}
+        Editar plato
+    {% endblock %}
+    {% block contenido %}
+        {{ include('plato/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        {{ include('plato/_delete_form.html.twig') }}
+        <a href="{{ path('plato_listado') }}">Volver a la lista</a>
+    {% endblock %}
+{% endblock %}

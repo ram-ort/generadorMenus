@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo menú{% endblock %}
+
+{% block body %}
+    {% block tituloseccion %}
+        Nuevo menú
+    {% endblock %}
+    {% block contenido %}
+
+    <div class="container">
+      <p>Elabora tu menú de desayuno (1 plato tipo <i>desayuno</i>), comida (1 plato tipo <i>comida</i> + 1 plato tipo <i>postre</i>) y cena (1 plato tipo <i>cena</i> + 1 plato tipo <i>postre</i>).</p>
+      <div class="row">
+        <div class="col-sm">
+           <h3>Desayunos</h3>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Calorías</th>
+                    <th>Tipo</th>
+                </tr>
+              </thead>
+                <tbody>
+            {% for desayuno in desayunos %}
+                    <tr>
+                        <td>{{ desayuno.nombre }}</td>
+                        <td>{{ desayuno.calorias }}</td>
+                        <td>{{ desayuno.tipo.nombre }}</td>
+                    </tr>
+            {% else %}
+                    <tr>
+                        <td colspan="4">No hay registros</td>
+                    </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm">
+           <h3>Comidas</h3>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Calorías</th>
+                    <th>Tipo</th>
+                </tr>
+              </thead>
+                <tbody>
+            {% for comida in comidas %}
+                    <tr>
+                        <td>{{ comida.nombre }}</td>
+                        <td>{{ comida.calorias }}</td>
+                        <td>{{ comida.tipo.nombre }}</td>
+                    </tr>
+            {% else %}
+                    <tr>
+                        <td colspan="4">No hay registros</td>
+                    </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm">
+           <h3>Cenas</h3>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Calorías</th>
+                    <th>Tipo</th>
+                </tr>
+              </thead>
+                <tbody>
+            {% for cena in cenas %}
+                    <tr>
+                        <td>{{ cena.nombre }}</td>
+                        <td>{{ cena.calorias }}</td>
+                        <td>{{ cena.tipo.nombre }}</td>
+                    </tr>
+            {% else %}
+                    <tr>
+                        <td colspan="4">No hay registros</td>
+                    </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3 offset-sm-2">
+        <a class="btn btn-primary m-1" href="{{ path('plato_menuGenerado') }}">Generar menú</a>
+    </div>
+
+    <a href="{{ path('menuPrincipal_index') }}">Volver al menú principal</a>
+    {% endblock %}
+{% endblock %}

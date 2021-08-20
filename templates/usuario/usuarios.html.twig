@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario index{% endblock %}
+
+{% block body %}
+    {% block tituloseccion %}
+        Listado de usuarios
+    {% endblock %}
+    {% block contenido %}
+        <div class="col-sm-3 offset-sm-2">
+            <a class="btn btn-primary m-1" href="{{ path('usuario_new') }}">Crear nuevo</a>
+        </div>
+        <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Contraseña</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.contrasenia }}</td>
+                    <td>
+                        <a href="{{ path('usuario_edit', {'id': usuario.id}) }}">Editar</a>
+                        {{ include('usuario/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div> 
+        <a href="{{ path('menuPrincipal_index') }}">Volver al menú principal</a>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo plato{% endblock %}
+
+{% block body %}
+    {% block tituloseccion %}
+        Añadir plato
+    {% endblock %}
+    {% block contenido %}
+
+        {{ include('plato/_form.html.twig') }}
+
+        <br>
+        <a href="{{ path('plato_listado') }}">Volver a la lista</a>
+    {% endblock %}
+{% endblock %}

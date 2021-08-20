@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('plato_delete', {'id': plato.id}) }}" onsubmit="return confirm('¿Está seguro de que desea eliminar este plato?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ plato.id) }}">
+    <button class="btn btn-danger">Eliminar</button>
+</form>

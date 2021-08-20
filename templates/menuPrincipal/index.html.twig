@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menú principal{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+    {% block tituloseccion %}
+        Menú principal
+    {% endblock %}
+    {% block contenido %}
+    <div class="col-sm-8 offset-sm-2">
+        <div class="m-3">
+            <a class="btn btn-primary m-3 py-3 px-5" href="{{ path('usuario_inicio') }}">Inicio</a>
+            <a class="btn btn-secondary m-3 py-3 px-5" href="{{ path('plato_listado') }}">Platos</a>
+            <a class="btn btn-success m-3 py-3 px-5" href="{{ path('plato_nuevoMenu') }}">Nuevo menú</a>
+            <a class="btn btn-danger m-3 py-3 px-5" href="{{ path('usuario_usuarios') }}">Usuarios</a>
+        </div>
+    </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar usuario{% endblock %}
+{% block body %}
+    {% block tituloseccion %}
+        Editar usuario
+    {% endblock %}
+    {% block contenido %}
+        {{ include('usuario/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        <div class="mt-4">
+            <a href="{{ path('usuario_usuarios') }}">Cancelar y volver a la lista</a>
+        </div>
+    {% endblock %}
+{% endblock %}

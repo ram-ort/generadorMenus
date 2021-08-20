@@ -1,0 +1,45 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\Usuario:
+            algorithm: auto
+            cost: 5
+    providers:
+        users_in_memory: { memory: null }
+        providerLogin:
+            entity:
+                class: App\Entity\Usuario
+                property: nombre
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            lazy: true
+            provider: users_in_memory
+            form_login:
+                login_path: usuario_inicio
+                check_path: usuario_inicio
+                default_target_path: usuario_usuarios
+                provider: providerLogin
+            logout:
+                path: app_logout
+                target: usuario_usuarios
+                # where to redirect after logout
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            switch_user: true
+            guard:
+                authenticators:
+                    - App\Security\UsuarioAuthenticator
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/plato, roles: ROLE_USER }
